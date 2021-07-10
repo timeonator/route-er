@@ -14,9 +14,18 @@ module.exports = {
         }),
     ],
     devServer: {
+        historyApiFallback: true,
+        port:8000,
+        onListening: function (server) {
+            const port = server.listeningApp.address().port;
+            console.log('Listening on port:', port);
+        },
         contentBase: '/dist',
+        publicPath: '/',
+        openPage: 'about',
     },
     output: {
+        publicPath: "/",
         filename: "main.js",
         path: path.resolve(__dirname, "dist")
     },
