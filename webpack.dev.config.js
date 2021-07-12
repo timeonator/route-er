@@ -14,16 +14,7 @@ module.exports = {
             inject:'head',
         })
     ],
-    devServer: {
-        port: 8080,
-        onListening: function (server) {
-            const port = server.listeningApp.address().port;
-            console.log('Listening on port:', port);
-        },
-        historyApiFallback: true,
-        publicPath: "/",
-        contentBase: '/dist',
-    },
+
     devServer: {
         historyApiFallback: true,
         port:8000,
