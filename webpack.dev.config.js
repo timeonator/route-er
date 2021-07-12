@@ -7,12 +7,23 @@ module.exports = {
     devServer: {
         contentBase: './dist',
     },
+    devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-          title: 'Development',
-          inject:'head'   
-        }),
+            title: 'Development',
+            inject:'head',
+        })
     ],
+    devServer: {
+        port: 8080,
+        onListening: function (server) {
+            const port = server.listeningApp.address().port;
+            console.log('Listening on port:', port);
+        },
+        historyApiFallback: true,
+        publicPath: "/",
+        contentBase: '/dist',
+    },
     devServer: {
         historyApiFallback: true,
         port:8000,
@@ -22,7 +33,6 @@ module.exports = {
         },
         contentBase: '/dist',
         publicPath: '/',
-        openPage: 'about',
     },
     output: {
         publicPath: "/",
